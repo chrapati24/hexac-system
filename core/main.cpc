@@ -1,0 +1,75 @@
+// Copyright (c) 2023, Chrapati
+// 
+// The MIT License (MIT)
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
+
+// HEXAC SYSTEM
+// MAIN.CPC : START HEXAC FROM HERE (SERVICES, SYSAPPS, ETC.)
+// CREATION DATE : 2023-12-17
+
+ccp/ /set.level = 4
+
+txt/ Hexac System %os_ver_maj%.%os_ver_min%.%os_ver_patch%
+txt/ This operating system is licensed by MIT License.
+txt/ Copyright (c) 2023, Chrapati. All rights reserved.
+
+txt/ Hexac Directory in Cpcdos OSx : %host_os%
+
+// sys/ /process /list
+
+// Creating Sys Process
+
+@#hexacGlobalProcess sys/ /process HEXAC_Global
+@#hexacShellProcess sys/ /process HEXAC_Shell
+@#hexacDesktopProcess sys/ /process HEXAC_Desktop
+@#hexacGamelauncherProcess sys/ /process HEXAC_Games
+@#hexacSetupProcess sys/ /process HEXAC_Setup
+@#hexacStartProcess sys/ /process HEXAC_Start
+
+// Checking defmode.cfg for launch user-selected mode
+
+@#hexacDefaultMode cmd/ /pid:%hexacStartProcess% open/ %host_os%/config/settings/defmode.cfg
+
+ccp/ /pause:500
+
+if/ "%hexacDefaultMode%" == "shell" then:
+    cmd/ /pid:%hexacShellProcess% exe/ %host_os%/core/modes/shell/shell.cpc
+else:
+    if/ "%hexacDefaultMode%" == "games" then:
+        cmd/ /pid:%hexacGamelauncherProcess% exe/ %host_os%/core/modes/games/games.cpc
+    else:
+        if/ "%hexacDefaultMode%" == "desktop" then:
+            cmd/ /pid:%hexacDesktopProcess% exe/ %host_os%/core/modes/games/games.cpc
+        else:
+            if/ "%hexacDefaultMode%" == "setup" then:
+                cmd/ /pid:%hexacSetupProcess% exe/ %host_os%/core/modes/setup/setup.cpc
+            end/ if
+        end/ if
+    end/ if
+end/ if
+
+// DEBUG : Print process list
+
+sys/ /process /list
+
+
+
+
