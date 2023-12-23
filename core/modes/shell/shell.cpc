@@ -28,4 +28,33 @@ ccp/ /set.level = 4
 
 cls/
 
-txt/ Hello From Shell
+set/ hs_con_usr = root
+txt/ Hexac Shell. User name : %hs_con_usr%
+
+:hsh_prompt:
+set/ prompt = %host_os%#%hs_con_usr% >
+txt/ %prompt% /#r
+set/ /q command
+
+if/ "%prompt%" ~= "SHOW" then:
+    set/ poscmd = /f:CPC.INSTR(%prompt%,SHOW) 
+    /f:CPC.SIZE(%prompt%)
+    set/ argslen = /C(%prompt% - 4)
+    if/ "%poscmd%" > "0" then:
+        set/ poscmd = /C(%poscmd% + %argslen%)
+        set/ args = /F:CPC.MID(%prompt%,%poscmd%)
+    end/ if
+    txt/ %args%
+    set/ /s prompt
+    set/ /s poscmd
+    set/ /s args
+    goto/ hsh_prompt
+end/ if
+
+if/ "%prompt%" == "hello" then:
+    txt/ Hello !
+    ccp/ /pause:500
+    goto/ hsh_prompt
+end/ if
+
+

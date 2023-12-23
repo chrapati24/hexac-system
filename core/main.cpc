@@ -46,24 +46,18 @@ txt/ Hexac Directory in Cpcdos OSx : %host_os%
 
 // Checking defmode.cfg for launch user-selected mode
 
-@#hexacDefaultMode cmd/ /pid:%hexacStartProcess% open/ %host_os%/config/settings/defmode.cfg
+@#hexacDefaultMode open/ %host_os%/config/settings/defmode.cfg
 
 ccp/ /pause:500
 
+sys/ /debug = 2
+
 if/ "%hexacDefaultMode%" == "shell" then:
-    cmd/ /pid:%hexacShellProcess% exe/ %host_os%/core/modes/shell/shell.cpc
-else:
-    if/ "%hexacDefaultMode%" == "games" then:
-        cmd/ /pid:%hexacGamelauncherProcess% exe/ %host_os%/core/modes/games/games.cpc
-    else:
-        if/ "%hexacDefaultMode%" == "desktop" then:
-            cmd/ /pid:%hexacDesktopProcess% exe/ %host_os%/core/modes/games/games.cpc
-        else:
-            if/ "%hexacDefaultMode%" == "setup" then:
-                cmd/ /pid:%hexacSetupProcess% exe/ %host_os%/core/modes/setup/setup.cpc
-            end/ if
-        end/ if
-    end/ if
+    exe/ & %host_os%/core/modes/shell/shell.cpc
+end/ if
+
+if/ "%hexacDefaultMode%" == "setup" then:
+    exe/ & %host_os%/core/modes/setup/setup.cpc
 end/ if
 
 // DEBUG : Print process list
