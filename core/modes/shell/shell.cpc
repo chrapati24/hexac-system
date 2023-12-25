@@ -26,35 +26,91 @@
 
 ccp/ /set.level = 4
 
+sys/ /debug /menu = 0
+
 cls/
 
 set/ hs_con_usr = root
 txt/ Hexac Shell. User name : %hs_con_usr%
 
+txt/ help -> print all of Hexac Shell commands
+
 :hsh_prompt:
-set/ prompt = %host_os%#%hs_con_usr% >
+set/ prompt = %host_os%#%hs_con_usr%>
 txt/ %prompt% /#r
 set/ /q command
 
-if/ "%prompt%" ~= "SHOW" then:
-    set/ poscmd = /f:CPC.INSTR(%prompt%,SHOW) 
-    /f:CPC.SIZE(%prompt%)
-    set/ argslen = /C(%prompt% - 4)
-    if/ "%poscmd%" > "0" then:
-        set/ poscmd = /C(%poscmd% + %argslen%)
-        set/ args = /F:CPC.MID(%prompt%,%poscmd%)
-    end/ if
-    txt/ %args%
-    set/ /s prompt
-    set/ /s poscmd
-    set/ /s args
+if/ "%command%" == "help" then:
+    txt/ Help commands :
+    txt/ -> calc : Two-variables calculator
+    // calc : done
+    txt/ -> echo (text) : Return a text into the terminal
+    // echo : done
+    txt/ -> cls : Clear terminal history
+    // cls : done
+    txt/ -> ver : Hexac System version
+    // ver : done
+    txt/ -> kver : Cpcdos OSx version
+    // kver : done
+    txt/ -> license : Current software license
+    // license : done
+    txt/ -> special : Very special ;-)
+    // special : done lol
     goto/ hsh_prompt
 end/ if
 
-if/ "%prompt%" == "hello" then:
-    txt/ Hello !
-    ccp/ /pause:500
+if/ "%command%" == "calc" then:
+    exe/ & %host_os%/core/modes/shell/shcalc.cpc
     goto/ hsh_prompt
 end/ if
+
+if/ "%command%" ~= "echo" then:
+    set/ poscmd = /f:CPC.INSTR(%command%,echo) 
+    /f:CPC.TAILLE(%command%)
+    set/ argslen = /C(%command% - 4)
+    if/ "%poscmd%" > "0" then:
+      set/ poscmd = /C(%poscmd% + %argslen%)
+      set/ args = /F:CPC.MID(%command%,%poscmd%)
+    end/ if
+    txt/ %args%
+    set/ /s args
+    set/ /s command
+    set/ /s poscmd
+    goto/ hsh_prompt
+end/ if
+
+if/ "%command%" == "cls" then:
+    cls/
+    goto/ hsh_prompt
+end/ if
+
+if/ "%command%" == "ver" then:
+    txt/ Hexac System : Version %os_ver_maj%.%os_ver_min%.%os_ver_patch%
+    goto/ hsh_prompt
+end/ if
+
+if/ "%command%" == "kver" then:
+    txt/ Kernel : Cpcdos OSx %CPC.VER% - Build %CPC.VER.BUILD%
+    goto/ hsh_prompt
+end/ if
+
+if/ "%command%" == "license" then:
+    txt/ Hexac System %os_ver_maj%.%os_ver_min%.%os_ver_patch%
+    txt/ MIT License - Copyright (c) 2023 Chrapati. All rights reserved.
+    txt/ Hexac System is an open-source software. If you want more informations,
+    txt/ you can read License at Computer Settings.
+    goto/ hsh_prompt
+end/ if
+
+if/ "%command%" == "special" then:
+    exe/ & %host_os%/core/modes/shell/special.cpc
+    goto/ hsh_prompt
+end/ if
+
+if/ "%command%" == "chat-weirdpt" then:
+    exe/ & %host_os%/core/modes/shell/weirdpt.cpc
+    goto/ hsh_prompt
+end/ if
+
 
 

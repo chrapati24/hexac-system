@@ -20,52 +20,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-
 // HEXAC SYSTEM
-// MAIN.CPC : START HEXAC FROM HERE (SERVICES, SYSAPPS, ETC.)
-// CREATION DATE : 2023-12-17
+// SPECIAL.CPC : IT'S SOOOO SPECIAL
+// CREATION DATE : 2023-12-25
 
-ccp/ /set.level = 4
+cls/
 
-txt/ Hexac System %os_ver_maj%.%os_ver_min%.%os_ver_patch%
-txt/ This operating system is licensed by MIT License.
-txt/ Copyright (c) 2023, Chrapati. All rights reserved.
+txt/ 3
 
-txt/ Hexac Directory in Cpcdos OSx : %host_os%
+ccp/ /pause:1000
 
-// sys/ /process /list
+txt/ 2...
 
-// Creating Sys Process
+ccp/ /pause:1000
 
-@#hexacGlobalProcess sys/ /process HEXAC_Global
-@#hexacShellProcess sys/ /process HEXAC_Shell
-@#hexacDesktopProcess sys/ /process HEXAC_Desktop
-@#hexacGamelauncherProcess sys/ /process HEXAC_Games
-@#hexacSetupProcess sys/ /process HEXAC_Setup
-@#hexacStartProcess sys/ /process HEXAC_Start
+txt/ 1 !!! >:O
 
-// Checking defmode.cfg for launch user-selected mode
+ccp/ /pause:1000
 
-@#hexacDefaultMode open/ %host_os%/config/settings/defmode.cfg
+cls/
 
-ccp/ /pause:500
+colorb/ 15
+colorf/ 0
 
-// sys/ /debug = 2
-
-// if/ "%hexacDefaultMode%" == "shell" then:
-//     exe/ & %host_os%/core/modes/shell/shell.cpc
-// end/ if
-// 
-// if/ "%hexacDefaultMode%" == "setup" then:
-//     exe/ & %host_os%/core/modes/setup/setup.cpc
-// end/ if
-
-exe/ & %host_os%/core/modes/shell/shell.cpc
-
-// DEBUG : Print process list
-
-sys/ /process /list
-
+txt/ Congrats ! There is a Light-Mode :D
 
 
 

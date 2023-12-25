@@ -20,52 +20,31 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-
 // HEXAC SYSTEM
-// MAIN.CPC : START HEXAC FROM HERE (SERVICES, SYSAPPS, ETC.)
-// CREATION DATE : 2023-12-17
+// SHCALC.CPC : HEXAC SYSTEM SHELL CALCULATOR (ONLY TWO VARIABLES)
+// CREATION DATE : 2023-12-25 (IT'S MY CHRISTMAS GIFT :D)
 
 ccp/ /set.level = 4
 
-txt/ Hexac System %os_ver_maj%.%os_ver_min%.%os_ver_patch%
-txt/ This operating system is licensed by MIT License.
-txt/ Copyright (c) 2023, Chrapati. All rights reserved.
+txt/ Hexac Shell Calculator :
 
-txt/ Hexac Directory in Cpcdos OSx : %host_os%
+txt/ Please enter a first number : /#r
 
-// sys/ /process /list
+set/ /q first_number
 
-// Creating Sys Process
+txt/ %first_number%
 
-@#hexacGlobalProcess sys/ /process HEXAC_Global
-@#hexacShellProcess sys/ /process HEXAC_Shell
-@#hexacDesktopProcess sys/ /process HEXAC_Desktop
-@#hexacGamelauncherProcess sys/ /process HEXAC_Games
-@#hexacSetupProcess sys/ /process HEXAC_Setup
-@#hexacStartProcess sys/ /process HEXAC_Start
+txt/ Please enter a second number : /#r
 
-// Checking defmode.cfg for launch user-selected mode
+set/ /q second_number
 
-@#hexacDefaultMode open/ %host_os%/config/settings/defmode.cfg
+txt/ %second_number%
 
-ccp/ /pause:500
+set/ result = /C(%first_number% + %second_number%)
 
-// sys/ /debug = 2
+txt/ %first_number% + %second_number% = %result%
 
-// if/ "%hexacDefaultMode%" == "shell" then:
-//     exe/ & %host_os%/core/modes/shell/shell.cpc
-// end/ if
-// 
-// if/ "%hexacDefaultMode%" == "setup" then:
-//     exe/ & %host_os%/core/modes/setup/setup.cpc
-// end/ if
-
-exe/ & %host_os%/core/modes/shell/shell.cpc
-
-// DEBUG : Print process list
-
-sys/ /process /list
-
+txt/ That's right ! If you want to reuse the calc, please enter 'calc' command.
 
 
 
