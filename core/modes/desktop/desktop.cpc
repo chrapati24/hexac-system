@@ -1,4 +1,4 @@
-// Copyright (c) 2023, Chrapati
+// Copyright (c) 2023 - 2024, Chrapati
 // 
 // The MIT License (MIT)
 // 
@@ -26,9 +26,14 @@
 
 ccp/ /set.level = 4
 
-cls/
+// sys/ /debug = 2
 
-txt/ Hello From Desktop
+exe/ & %host_os%/core/modes/desktop/toolbar/toolbar.cpc
+exe/ & %host_os%/core/modes/desktop/taskbar/taskbar.cpc
 
+
+exe/ & %host_os%/core/modes/desktop/sourix/sourix.cpc
+
+refresh/ /all
 
 

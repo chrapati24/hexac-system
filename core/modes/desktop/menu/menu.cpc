@@ -1,0 +1,245 @@
+// Copyright (c) 2023 - 2024, Chrapati
+// 
+// The MIT License (MIT)
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
+// HEXAC SYSTEM
+// MENU.CPC : HEXAC SYSTEM DESKTOP MENU
+// CREATION DATE : 2023-12-26
+
+window/ hexacDesktopMenu
+    .title = "hexacDesktopMenu"
+    .parameters = "TYPE:4 CTN:1 BORD:0 MOV:0 SIZ:0 SHADOW:0 TASKBARHIDE:1"
+    .px = "3"
+    .py = "32"
+    .sx = "200"
+    .sy = "305"
+    .BackColor = "078,078,078"
+    .opacity = "255"
+    @#hexacDesktopMenu create/
+end/ window
+
+textblock/ aboutComputer_Label
+    .handle = "%hexacDesktopMenu%"
+    .text = "About Computer"
+    .parameters = "IMGAUTO:0 COL:0 MULTILINES:0"
+    .sx = "190"
+    .sy = "20"
+    .px = "5"
+    .py = "5"
+    .TextColor = "255,255,255"
+    .events = "%_exe_path_%"
+    create/
+end/ textblock
+
+textblock/ desktopControlPanel_Label
+    .handle = "%hexacDesktopMenu%"
+    .text = "Desktop Control Panel"
+    .parameters = "IMGAUTO:0 COL:0 MULTILINES:0"
+    .sx = "190"
+    .sy = "20"
+    .px = "5"
+    .py = "25"
+    .TextColor = "255,255,255"
+    .events = "%_exe_path_%"
+    create/
+end/ textblock
+
+textblock/ calculator_Label
+    .handle = "%hexacDesktopMenu%"
+    .text = "Calculator"
+    .parameters = "IMGAUTO:0 COL:0 MULTILINES:0"
+    .sx = "190"
+    .sy = "20"
+    .px = "5"
+    .py = "45"
+    .TextColor = "255,255,255"
+    .events = "%_exe_path_%"
+    create/
+end/ textblock
+
+textblock/ notepad_Label
+    .handle = "%hexacDesktopMenu%"
+    .text = "Notepad"
+    .parameters = "IMGAUTO:0 COL:0 MULTILINES:0"
+    .sx = "190"
+    .sy = "20"
+    .px = "5"
+    .py = "65"
+    .TextColor = "255,255,255"
+    .events = "%_exe_path_%"
+    create/
+end/ textblock
+
+textblock/ sourixFX_Label
+    .handle = "%hexacDesktopMenu%"
+    .text = "Sourix File Explorer"
+    .parameters = "IMGAUTO:0 COL:0 MULTILINES:0"
+    .sx = "190"
+    .sy = "20"
+    .px = "5"
+    .py = "85"
+    .TextColor = "255,255,255"
+    .events = "%_exe_path_%"
+    create/
+end/ textblock
+
+textblock/ chrapatiaNetwork_Label
+    .handle = "%hexacDesktopMenu%"
+    .text = "Chrapatia Network"
+    .parameters = "IMGAUTO:0 COL:0 MULTILINES:0"
+    .sx = "190"
+    .sy = "20"
+    .px = "5"
+    .py = "105"
+    .TextColor = "255,255,255"
+    .events = "%_exe_path_%"
+    create/
+end/ textblock
+
+textblock/ OpenGL_Label
+    .handle = "%hexacDesktopMenu%"
+    .text = "OpenGL"
+    .parameters = "IMGAUTO:0 COL:0 MULTILINES:0"
+    .sx = "190"
+    .sy = "20"
+    .px = "5"
+    .py = "125"
+    .TextColor = "255,255,255"
+    .events = "%_exe_path_%"
+    create/
+end/ textblock
+
+textblock/ Supersearch_Label
+    .handle = "%hexacDesktopMenu%"
+    .text = "Chrapatia SuperSearch"
+    .parameters = "IMGAUTO:0 COL:0 MULTILINES:0"
+    .sx = "190"
+    .sy = "20"
+    .px = "5"
+    .py = "145"
+    .TextColor = "255,255,255"
+    .events = "%_exe_path_%"
+    create/
+end/ textblock
+
+textblock/ gameLauncher_Label
+    .handle = "%hexacDesktopMenu%"
+    .text = "Hexac GameLauncher"
+    .parameters = "IMGAUTO:0 COL:0 MULTILINES:0"
+    .sx = "190"
+    .sy = "20"
+    .px = "5"
+    .py = "165"
+    .TextColor = "255,255,255"
+    .events = "%_exe_path_%"
+    create/
+end/ textblock
+
+textblock/ computerSettings_Label
+    .handle = "%hexacDesktopMenu%"
+    .text = "Computer Settings"
+    .parameters = "IMGAUTO:0 COL:0 MULTILINES:0"
+    .sx = "190"
+    .sy = "20"
+    .px = "5"
+    .py = "185"
+    .TextColor = "255,255,255"
+    .events = "%_exe_path_%"
+    create/
+end/ textblock
+
+textblock/ alimentation_Label
+    .handle = "%hexacDesktopMenu%"
+    .text = "Alimentation menu"
+    .parameters = "IMGAUTO:0 COL:0 MULTILINES:0"
+    .sx = "190"
+    .sy = "20"
+    .px = "5"
+    .py = "205"
+    .TextColor = "255,255,255"
+    .events = "%_exe_path_%"
+    create/
+end/ textblock
+
+textblock/ aboutMenu_Label
+    .handle = "%hexacDesktopMenu%"
+    .text = "About Menu"
+    .parameters = "IMGAUTO:0 COL:0 MULTILINES:0"
+    .sx = "190"
+    .sy = "20"
+    .px = "5"
+    .py = "265"
+    .TextColor = "255,255,255"
+    .events = "%_exe_path_%"
+    create/
+end/ textblock
+
+textblock/ closeMenu_Label
+    .handle = "%hexacDesktopMenu%"
+    .text = "Close menu"
+    .parameters = "IMGAUTO:0 COL:0 MULTILINES:0"
+    .sx = "190"
+    .sy = "20"
+    .px = "5"
+    .py = "285"
+    .TextColor = "255,255,255"
+    .events = "%_exe_path_%"
+    create/
+end/ textblock
+
+// Labels Events
+
+function/ aboutComputer_Label.MouseClick()
+    exe/ & %host_os%/core/modes/desktop/menu/aboutpc.cpc
+    close/ hexacDesktopMenu
+end/ function
+
+function/ desktopControlPanel_Label.MouseClick()
+    exe/ & %host_os%/core/modes/desktop/crtlpanl/crtlpanl.cpc
+    close/ hexacDesktopMenu
+end/ function
+
+function/ calculator_Label.MouseClick()
+    exe/ & %host_os%/apps/calcul/calcul.cpc
+    close/ hexacDesktopMenu
+end/ function
+
+function/ notepad_Label.MouseClick()
+    exe/ & %host_os%/apps/notepad/notepad.cpc
+    close/ hexacDesktopMenu
+end/ function
+
+function/ gameLauncher_Label.MouseClick()
+    msgbox/ This is for a next update. /title:Not implemented /error:4 /Type:0
+end/ function
+
+function/ computerSettings_Label.MouseClick()
+    msgbox/ This is for a next update. /title:Not implemented /error:4 /Type:0
+end/ function
+
+function/ closeMenu_Label.MouseClick()
+    close/ hexacDesktopMenu
+end/ function
+
+
+
+
+

@@ -1,0 +1,75 @@
+// Copyright (c) 2023 - 2024, Chrapati
+// 
+// The MIT License (MIT)
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
+// HEXAC SYSTEM
+// TOOLBAR.CPC : HEXAC SYSTEM DESKTOP TOOLBAR
+// CREATION DATE : 2023-12-26
+
+
+window/ hexacToolbar
+    .title = "hexacToolBar"
+    .parameters = "TYPE:4 CTN:1 BORD:0 MOVE:0 SIZ:0 SHADOW:0 TASKBARHIDE:1 CLOSE:0 REDUCT:0 SIZEBTN:0 COLLISION:0"
+    .px = "0"
+    .py = "0"
+    .sx = "%CPC.SCR.X%"
+    .sy = "31"
+    .BackColor = "198,198,198"
+    .opacity = "255"
+    @#hexacToolbar create/
+end/ window
+
+button/ hexacMenuBTN
+    .handle = "%hexacToolbar%"
+    .parameters = "IMGAUTO:0"
+    .text = "Menu"
+    .px = "3"
+    .py = "5"
+    .sx = "50"
+    .sy = "20"
+    .TextColor = "000,000,000"
+    .BackColor = "198,198,198"
+    .events = "%_exe_path_%"
+    create/
+end/ button
+
+set/ hourPx = /C(%CPC.SCR.X% - 50)
+
+textblock/ computerHour
+    .handle = "%hexacToolbar%"
+    .parameters = "IMGAUTO:0 COL:1 UPD:1 MULTILINES:0"
+    .text = "${CPC.TIME}"
+    .px = "%hourPx%"
+    .py = "5"
+    .sx = "100"
+    .sy = "20"
+    .TextColor = "000,000,000"
+    .BackColor = "198,198,198"
+    .events = "%_exe_path_%"
+    create/
+end/ textblock
+
+function/ hexacMenuBTN.MouseClick()
+    exe/ & %host_os%/core/modes/desktop/menu/menu.cpc
+end/ function
+
+
+

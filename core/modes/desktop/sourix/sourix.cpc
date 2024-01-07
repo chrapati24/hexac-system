@@ -1,0 +1,71 @@
+// Copyright (c) 2023 - 2024, Chrapati
+// 
+// The MIT License (MIT)
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
+// HEXAC SYSTEM
+// SOURIX.CPC : HEXAC SYSTEM FILE EXPLORER
+// CREATION DATE : 2024-01-01
+
+set/ minsx = 800
+set/ minsy = 600
+
+set/ maxsx = %CPC.SCR.X%
+set/ maxsy = /C(%CPC.SCR.Y% - 31)
+
+set/ expminsx = /C(%minsx% - 10)
+set/ expminsy = /C(%minsy% - 35)
+
+set/ expmaxsx = /C(%maxsx% - 10)
+set/ expmaxsy = /C(%maxsy% - 35)
+
+set/ posx = /C(%CPC.SCR.X%/2 - %minsx%/2)
+set/ posy = /C(%CPC.SCR.Y%/2 - %minsy%/2)
+
+
+window/ sourixFileExplorer
+    .title = "Sourix File Explorer"
+    .parameters = "TYPE:0 SHADOW:0 SIZ:1 MINSIZ_X:%minsx%P MAXSIZ_X:%maxsx%P MINSIZ_Y:%minsy%P MAXSIZ_Y:%maxsy%P CTX:2"
+    .px = "100"
+    .py = "100"
+    .sx = "%minsx%"
+    .sy = "%minsy%"
+    .BackColor = "095,095,095"
+    .TitleColor = "255,255,255"
+    .events = "%_exe_path_%"
+    @#sourixFileExplorer create/
+end/ window
+
+explorer/ renderedFilesAndFolders
+    .handle = "%sourixFileExplorer%"
+    .parameters = "EXPLOREMODE:1 DESKTOPMODE:0"
+    .px = "5"
+    .py = "30"
+    .sx = "%expminsx%"
+    .sy = "%expminsy%"
+    .TextColor = "255,255,255"
+    .BackColor = "198,198,198"
+    .events = "%_exe_path_%"
+    .text = ""
+    create/
+end/ explorer
+
+
+
