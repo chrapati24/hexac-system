@@ -1,0 +1,105 @@
+// Copyright (c) 2023 - 2024, Chrapati
+// 
+// The MIT License (MIT)
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
+// HEXAC SYSTEM
+// NOTEPAD.CPC : HEXAC SYSTEM NATIVE NOTEPAD
+// CREATION DATE : 2023-12-26
+
+window/ hexacNotepad
+    .title = "Notepad"
+    .parameters = "TYPE:0 SIZBTN:0 SIZ:0 CTX:0 SHADOW:0 ALPHAMODE:0"
+    .px = "100"
+    .py = "100"
+    .sx = "420"
+    .sy = "615"
+    .opacity = "255"
+    .BackColor = "198,198,198"
+    .TitleColor = "255,255,255"
+    @#hexacNotepad create/
+end/ window
+
+textbox/ noteZone
+    .handle = "%hexacNotepad%"
+    .parameters = "IMGAUTO:0 MULTILINES:1"
+    .px = "0"
+    .py = "20"
+    .sx = "420"
+    .sy = "595"
+    .BackColor = "255,255,255"
+    .TextColor = "000,000,000"
+    create/
+end/ textbox
+
+ccp/ /pause:100
+
+textblock/ save_btn
+    .handle = "%hexacNotepad%"
+    .text = "Save"
+    .parameters = "IMGAUTO:0 COL:0 MULTILINES:0"
+    .px = "0"
+    .py = "0"
+    .sx = "40"
+    .sy = "20"
+    .TextColor = "000,000,000"
+    .events = "%_exe_path_%"
+    create/
+end/ textblock
+
+textblock/ about_btn
+    .handle = "%hexacNotepad%"
+    .text = "About"
+    .parameters = "IMGAUTO:0 COL:0 MULTILINES:0"
+    .px = "40"
+    .py = "0"
+    .sx = "50"
+    .sy = "20"
+    .TextColor = "000,000,000"
+    .events = "%_exe_path_%"
+    create/
+end/ textblock
+
+textblock/ quit_btn
+    .handle = "%hexacNotepad%"
+    .text = "Quit"
+    .parameters = "IMGAUTO:0 COL:0 MULTILINES:0"
+    .px = "90"
+    .py = "0"
+    .sx = "50"
+    .sy = "20"
+    .TextColor = "000,000,000"
+    .events = "%_exe_path_%"
+    create/
+end/ textblock
+
+// Toolbar Events
+
+function/ about_btn.MouseClick()
+    exe/ & %host_os%/apps/notepad/about.cpc
+end/ function
+
+function/ quit_btn.MouseClick()
+    close/ hexacNotepad
+end/ function
+
+
+
+

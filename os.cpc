@@ -1,4 +1,4 @@
-// Copyright (c) 2023, Chrapati
+// Copyright (c) 2023 - 2024, Chrapati
 // 
 // The MIT License (MIT)
 // 
@@ -25,22 +25,38 @@
 // OS.CPC : OS INDEX FOR CPCDOS
 // CREATION DATE : 2023-12-15
 
+sys/ /os:hexac
+
 ccp/ /set.level = 4
 
 ccp/ /lang = EN
 
-sys/ /os:hexac
-
 set/ os_name = Hexac System
 set/ os_author = Chrapati
 set/ os_ver_maj = 0
-set/ os_ver_min = 0
+set/ os_ver_min = 1
 set/ os_ver_patch = 0
 set/ host_os = OS/hexac
 set/ os_gui = %host_os%/res/legacy
 
+exe/ & %host_os%/core/legacyui/ENV_GUI.CPC
+
+set/ SCR_RES = 1280x1024
+set/ SCR_BIT = 32
+set/ SCR_IMG = %host_os%/res/backgrd/bmbck.png
+
 cls/
 
-exe/ & %host_os%/core/main.cpc
+gui/ /os:hexac
+
+sys/ /fileformat-update %host_os%/core/FORMATS.INI
+
+sys/ /fileformat-gui-load
+
+set/ handle_desktop = /F:Init_Desktop(HexacDesktop, OS/hexac/apps, 0, 31, %CPC.SCR.X%, 800)
+
+exe/ & %host_os%/core/modes/desktop/desktop.cpc
+
+// exe/ & %host_os%/core/main.cpc
 
 

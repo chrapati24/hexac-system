@@ -1,0 +1,63 @@
+// Copyright (c) 2023 - 2024, Chrapati
+// 
+// The MIT License (MIT)
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
+// HEXAC SYSTEM
+// ABOUT.CPC : HEXAC SYSTEM NATIVE NOTEPAD ABOUT
+// CREATION DATE : 2023-12-26
+
+window/ hexacNotepadAbout
+    .title = "About Notepad"
+    .parameters = "TYPE:0 SIZBTN:0 SIZ:0 REDUCT:0 SHADOW:0 CTX:0 TASKBARHIDE:1 ALPHAMODE:0"
+    .px = "100"
+    .py = "100"
+    .sx = "300"
+    .sy = "200"
+    .opacity = "255"
+    .BackColor = "198,198,198"
+    .TitleColor = "255,255,255"
+    @#hexacNotepadAbout create/
+end/ window
+
+picturebox/ hexacLogo
+    .handle = "%hexacNotepadAbout%"
+    .parameters = "IMGAUTO:2 COL:0"
+    .px = "5"
+    .py = "5"
+    .sx = "290"
+    .sy = "40"
+    .image = "%os_gui%/hexac.png"
+    create/
+end/ picturebox
+
+textblock/ aboutParagraph
+    .handle = "%hexacNotepadAbout%"
+    .parameters = "IMGAUTO:0 COL:0"
+    .px = "5"
+    .py = "45"
+    .sx = "290"
+    .sy  = "140"
+    .text = "Hexac version : %os_ver_maj%.%os_ver_min%.%os_ver_patch% %CPC.CRLF%Hexac Notepad : 1.0 %CPC.CRLF%This software is licensed by %CPC.CRLF%MIT License. %CPC.CRLF%You can read the license at %CPC.CRLF%Computer Settings. %CPC.CRLF%Author : Chrapati %CPC.CRLF%(c) 2023 Chrapati"
+    .TextColor = "000,000,000"
+    create/
+end/ textblock
+
+

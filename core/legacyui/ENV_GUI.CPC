@@ -1,0 +1,73 @@
+
+// Variables niveau OS
+ccp/ /fix.niveau = 4
+fix/ OS_GUI = %host_os%/res/legacy
+
+// USER
+CCP/ /SET.LEVEL = 3
+
+
+// [FR] Configuration GUi
+// [EN] GUI configuration
+EXE/ & %host_os%/core/legacyui/gui_std.cpc
+
+// [FR] Configuration curseurs graphiques
+// [EN] Config graphic cursors
+EXE/ & %host_os%/core/legacyui/cursor.cpc
+
+// [FR] Configuration des fenetres
+// [EN] Window configuration
+EXE/ & %host_os%/core/legacyui/window.cpc
+
+
+// [FR] Configuration du bouton
+// [EN] Button configuration
+EXE/ & %host_os%/core/legacyui/button.cpc
+
+// [FR] Configuration du picturebox
+// [EN] Picturebox configuration
+EXE/ & %host_os%/core/legacyui/IMGBOX.cpc
+
+// [FR] Configuration du textebox
+// [EN] Textbox configuration
+EXE/ & %host_os%/core/legacyui/txtbox.cpc
+
+// [FR] Configuration du checkbox
+// [EN] checkbox configuration
+EXE/ & %host_os%/core/legacyui/checkbox.cpc
+
+// [FR] Configuration de l'explorateur
+// [EN] Explorer configuration
+EXE/ & %host_os%/core/legacyui/explorer.cpc
+
+// [FR] Configuration de la listbox
+// [EN] Listbox configuration
+EXE/ & %host_os%/core/legacyui/listbox.cpc
+
+
+// [FR] Configuration du msgbox
+// [EN] Msgbox configuration
+EXE/ & %host_os%/core/legacyui/msgbox.cpc
+
+
+// [FR] Configuration du menu contextuel
+// [EN] Contextual configuration
+EXE/ & %host_os%/core/legacyui/CONTEXT.cpc
+
+
+// [FR] Configuration du desktop
+// [EN] Desktop configuration
+EXE/ & %host_os%/core/legacyui/DESKTOP.cpc
+
+
+// [FR] Configuration du TaskBar
+// [EN] TaskBar configuration
+EXE/ & %host_os%/core/legacyui/TASKBAR.cpc
+
+
+// [FR] Configuration du gestionnaire de taches
+// [EN] Task manager configuration
+EXE/ & %host_os%/core/legacyui/taskmgr.cpc
+
+
+

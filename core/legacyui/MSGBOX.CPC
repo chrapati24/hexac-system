@@ -1,0 +1,163 @@
+' Create msgbox
+
+Declare/ gui.msgbox.window(window_name, title, WIN_POS_X, WIN_POS_Y, WIN_SIZ_X, WIN_SIZ_Y, R, V, B, MSGBOX_ICOM) : LEVEL(4)
+Declare/ gui.msgbox.icon(window_handle, pos_x, pos_y, path) : LEVEL(4)
+Declare/ gui.msgbox.text(window_name, window_handle, Message, pos_x, pos_y, siz_x, siz_y) : LEVEL(4)
+Declare/ gui.msgbox.icon(window_name, window_handle, pos_x, pos_y, img_path) : LEVEL(4)
+Declare/ gui.msgbox.button(window_name, window_handle, name, text, pos_x, pos_y, size_x, size_y, img_path, exe_event) : LEVEL(4)
+
+Function/ gui.msgbox.window(window_name, title, WIN_POS_X, WIN_POS_Y, WIN_SIZ_X, WIN_SIZ_Y, R, V, B, MSGBOX_ICOM)
+	// Create window msgbox
+
+	ccp/ /set.level = 1
+
+	// [EN] Display window
+	// [FR] Afficher la fenetre
+	Window/ %window_name%
+		.titre 			= "%Title%"
+		.PX				= "%WIN_POS_X%"
+		.PY				= "%WIN_POS_Y%"
+		.SX				= "%WIN_SIZ_X%"
+		.SY				= "%WIN_SIZ_Y%"
+		
+		
+		.TitleColor		= "240,240,240"
+		
+		.BackColor		= "%R%,%V%,%B%"
+		.WindowColor	= "%R%,%V%,%B%"
+		
+		.Opacity 		= "200"
+		
+		rem/ .TitleColor		= "230,230,230"
+		.Parameters 	= "TYPE:0 ALPHAMODE:1"
+
+		.icon			= "OS/MEDIA/GUI/MSGBOX/%MSGBOX_ICOM%"
+		
+		@#Handle_number Create/
+
+	End/ Window
+
+	return/ %Handle_number%
+
+End/ function
+
+Function/ gui.msgbox.text(window_name, window_handle, Message, pos_x, pos_y, siz_x, siz_y)
+	' Display text
+
+	ccp/ /set.level = 1
+
+	// [EN] Display text
+	// [FR] Afficher le texte
+	TextBlock/ text_%window_name%
+		.handle			= "%window_handle%"
+		.Text			= "%Message%"
+		.Parameters     = "COL:0 MULTILINES:1"
+
+		.PX				= "%pos_x%"
+
+		
+		.PY				= "%pos_y%"
+		.SX				= "%siz_x%"
+		.SY				= "%siz_y%"
+		
+		Create/
+	End/ TextBlock
+
+end/ function
+
+
+Function/ gui.msgbox.icon(window_name, window_handle, pos_x, pos_y, img_path)
+	// Create icon representation
+
+	ccp/ /set.level = 1
+
+	Picturebox/ msgbox_img_%window_name%
+		.handle			= "%window_handle%"
+		.Image			= "OS/MEDIA/GUI/MSGBOX/%img_path%"
+		
+		.PX				= "%pos_x%"
+		.PY				= "%pos_y%"
+
+		// [EN] Adapt SX & SY dimentions from source image (IMGAUTO:1)
+		// [FR] Adapter les dimensions TX & TY depuis l'image source (IMGAUTO:1)
+		.Parameters		= "IMGAUTO:1"
+		
+		Create/
+	End/ Picturebox
+
+End/ function
+
+Function/ gui.msgbox.button(window_name, window_handle, name, text, pos_x, pos_y, siz_x, siz_y, img_path, exe_event)
+	' Create button
+
+	ccp/ /set.level = 1
+
+
+	Button/ btn_defaut_%name%
+		.handle 			= "%window_handle%"
+		.Image				= "OS/MEDIA/GUI/BUTTONS/%img_path%"
+		
+		// [EN] IMGAUTO:2 for stretch image
+		// [FR] IMGAUTO:2 pour etirer l'image
+		.Parameters			= "IMGAUTO:2"
+
+		.text				= "%text%"
+		
+		.PX					= "%pos_x%"
+		.PY					= "%pos_y%"
+		
+		.SX					= "%siz_x%"
+		.SY					= "%siz_y%"
+	
+		IF/ "%exe_event%" != "" then: 
+			.event = "%exe_event%=MouseClick,Click,KeyEnter"
+		else:
+			.event = "%_exe_path_%=MouseClick,Click,KeyEnter"
+		End/ if
+		Create/
+	End/ Button
+
+End/ function
+
+
+// Actions par defaut
+Function/ msgbox_no_name.KeyEnter(text)
+	CLOSE/ msgbox_no_name
+End/ Function
+
+Function/ btn_defaut_ok.MouseClick()
+	CLOSE/ msgbox_no_name
+End/ Function
+
+Function/ btn_defaut_ok.KeyEnter(text)
+	CLOSE/ msgbox_no_name
+End/ Function
+
+
+
+Function/ btn_defaut_yes.MouseClick()
+	CLOSE/ msgbox_no_name
+End/ Function
+
+Function/ btn_defaut_yes.KeyEnter(text)
+	CLOSE/ msgbox_no_name
+End/ Function
+
+
+Function/ btn_defaut_no.MouseClick()
+	CLOSE/ msgbox_no_name
+End/ Function
+
+Function/ btn_defaut_no.KeyEnter(text)
+	CLOSE/ msgbox_no_name
+End/ Function
+
+
+
+
+
+
+
+
+
+
