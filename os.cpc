@@ -42,7 +42,7 @@ set/ os_gui = %host_os%/res/legacy
 exe/ & %host_os%/core/legacyui/ENV_GUI.CPC
 
 set/ SCR_RES = 1280x1024
-set/ SCR_BIT = 24
+set/ SCR_BIT = 32
 set/ SCR_IMG = %host_os%/res/backgrd/bmbck.png
 
 cls/
@@ -53,7 +53,7 @@ sys/ /fileformat-update %host_os%/core/FORMATS.INI
 
 sys/ /fileformat-gui-load
 
-set/ handle_desktop = /F:Init_Desktop(HexacDesktop, OS/hexac/, 0, 31, %CPC.SCR.X%, 800)
+set/ handle_desktop = /F:Init_Desktop(HexacDesktop, OS/hexac/apps, 0, 31, %CPC.SCR.X%, 800)
 
 exe/ & %host_os%/core/modes/desktop/desktop.cpc
 

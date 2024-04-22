@@ -227,6 +227,16 @@ function/ notepad_Label.MouseClick()
     close/ hexacDesktopMenu
 end/ function
 
+function/ sourixFX_Label.MouseClick()
+    exe/ & %host_os%/core/modes/desktop/sourix/sourix.cpc
+    close/ hexacDesktopMenu
+end/ function
+
+function/ OpenGL_Label.MouseClick()
+    exe/ & tests/mesa.cpc
+    close/ hexacDesktopMenu
+end/ function
+
 function/ gameLauncher_Label.MouseClick()
     msgbox/ This is for a next update. /title:Not implemented /error:4 /Type:0
 end/ function
